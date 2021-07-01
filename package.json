@@ -1,0 +1,9 @@
+{
+  "name": "@vbarbarosh/express-utils",
+  "version": "1.0.0",
+  "author": "Vladimir Barbaros <vladimir.barbarosh@gmail.com>",
+  "license": "MIT",
+  "peerDependencies": {
+    "bluebird": "^3.7.2"
+  }
+}
