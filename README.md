@@ -1,4 +1,4 @@
-A set of helpers for working with `express`
+A set of helpers for working with `express`.
 
 ## Installation
 
