@@ -20,4 +20,4 @@ function express_params(req)
     };
 }
 
-export default express_params;
+module.exports = express_params;

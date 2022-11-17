@@ -1,4 +1,4 @@
-import amx from './amx';
+const amx = require('./amx');
 
 function express_routes(app, routes)
 {
@@ -11,4 +11,4 @@ function express_routes(app, routes)
     return app;
 }
 
-export default express_routes;
+module.exports = express_routes;

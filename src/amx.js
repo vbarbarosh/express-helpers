@@ -1,4 +1,4 @@
-import Promise from 'bluebird';
+const Promise = require('bluebird');
 
 /**
  * Async method wrapper for express routes
@@ -14,4 +14,4 @@ function amx(fn)
     };
 }
 
-export default amx;
+module.exports = amx;

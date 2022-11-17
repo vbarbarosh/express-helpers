@@ -1,4 +1,4 @@
-import Promise from 'bluebird';
+const Promise = require('bluebird');
 
 function express_run(app, port = 3000, host = 'localhost')
 {
@@ -33,4 +33,4 @@ function express_run(app, port = 3000, host = 'localhost')
     }
 }
 
-export default express_run;
+module.exports = express_run;
