@@ -1,6 +1,6 @@
 {
   "name": "@vbarbarosh/express-helpers",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "author": "Vladimir Barbaros <vladimir.barbarosh@gmail.com>",
   "license": "MIT",
   "peerDependencies": {
