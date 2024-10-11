@@ -52,6 +52,7 @@ async function page404(req, res)
     res.status(404).send(`Page not found: ${req.path}`);
 }
 EOF
+
 echo {} > package.json
 npm install body-parser express @vbarbarosh/node-helpers @vbarbarosh/express-helpers
 node .
