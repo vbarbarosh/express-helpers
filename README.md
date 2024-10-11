@@ -9,9 +9,7 @@ npm install @vbarbarosh/express-helpers
 ## Quick Start
 
 ```shell
-echo {} > package.json
-npm install body-parser express @vbarbarosh/node-helpers @vbarbarosh/express-helpers
-cat > index.js << EOF
+cat > index.js << 'EOF'
 #!/usr/bin/env node
 
 // A basic template for node express apps
@@ -54,5 +52,7 @@ async function page404(req, res)
     res.status(404).send(`Page not found: ${req.path}`);
 }
 EOF
+echo {} > package.json
+npm install body-parser express @vbarbarosh/node-helpers @vbarbarosh/express-helpers
 node .
 ```
