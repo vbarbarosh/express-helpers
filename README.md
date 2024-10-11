@@ -54,4 +54,5 @@ async function page404(req, res)
     res.status(404).send(`Page not found: ${req.path}`);
 }
 EOF
+node .
 ```
