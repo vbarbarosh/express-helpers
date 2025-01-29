@@ -1,5 +1,6 @@
 const Promise = require('bluebird');
 const cuid = require('cuid');
+const express_fingerprint = require('./express_fingerprint');
 const fs = require('fs');
 
 let pending = 0;
@@ -29,7 +30,7 @@ function express_log(options = {})
         req.log = async function (s) {
             await append(`[${new Date().toJSON()}][${uid}][+${format_hrtime(hrtime0)}]${s[0] === '[' ? '' : ' '}${s.trim()}\n`);
         };
-        req.log(`[req_begin] ${req.method} ${json_stringify(req.url)}`);
+        req.log(`[req_begin] ${req.method} ${json_stringify(req.url)} ${json_stringify(express_fingerprint(req))} ${json_stringify(req.headers)}`);
         res.on('close', function () {
             pending--;
             req.log(`[res_close] ${res.statusCode} ${json_stringify(res.statusMessage)} pending=${pending}`);
@@ -51,7 +52,7 @@ function json_stringify_safe(value, replacer, space)
     return JSON.stringify(value, replacer, space);
 }
 
-function format_hrtime(hrtime0, digits = 6)
+function format_hrtime(hrtime0, digits = 4)
 {
     const [u, v] = process.hrtime(hrtime0);
     return (u + v/1E9).toFixed(digits) + 's';
