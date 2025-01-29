@@ -6,5 +6,9 @@
   "peerDependencies": {
     "bluebird": "*",
     "cuid": "*"
+  },
+  "devDependencies": {
+    "@vbarbarosh/node-helpers": "^3.60.0",
+    "express": "^4.21.2"
   }
 }
