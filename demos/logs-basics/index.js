@@ -15,7 +15,7 @@ async function main()
     const app = express();
 
     app.use(express_log({
-        append: s => process.stderr.write(s),
+        append: s => process.stderr.write(`[${new Date().toJSON()}]${s}\n`),
     }));
 
     express_routes(app, [

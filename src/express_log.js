@@ -11,16 +11,16 @@ function express_log(options = {})
         const date = new Date().toJSON().substring(0, 10);
         return `http-${date}.log`;
     };
-    const append = options.append || async function (message_line) {
+    const append = options.append || async function (message) {
         const file_value = await valcall(file);
         return new Promise(function (resolve, reject) {
-            fs.appendFile(file_value, message_line, function (error) {
+            fs.appendFile(file_value, `[${new Date().toJSON()}]${message}\n`, function (error) {
                 error ? reject(error) : resolve();
             });
         });
     };
 
-    append(`[${new Date().toJSON()}][${cuid()}][started]\n`);
+    append('[started]');
 
     // grep_Xai6eoxaim7gohmi8oon
     return function (req, res, next) {
@@ -28,7 +28,7 @@ function express_log(options = {})
         const uid = cuid();
         pending++;
         req.log = async function (s) {
-            await append(`[${new Date().toJSON()}][${uid}][+${format_hrtime(hrtime0)}]${s[0] === '[' ? '' : ' '}${s.trim()}\n`);
+            await append(`[${uid}][+${format_hrtime(hrtime0)}]${s[0] === '[' ? '' : ' '}${s.trim()}`);
         };
         req.log(`[req_begin] ${req.method} ${json_stringify(req.url)} ${json_stringify(express_fingerprint(req))} ${json_stringify(req.headers)}`);
         res.on('close', function () {
