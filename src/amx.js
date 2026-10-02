@@ -16,7 +16,8 @@ const Promise = require('bluebird');
 function amx(fn)
 {
     return function (req, res, next) {
-        return Promise.method(fn).call(this, req, res).catch(next);
+        // Express 5 warns when a handler returns a non-native promise
+        Promise.method(fn).call(this, req, res).catch(next);
     };
 }
 

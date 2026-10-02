@@ -16,10 +16,16 @@ async function main()
     express_routes(app, [
         {req: 'GET /', fn: echo},
         {req: 'ALL /echo', fn: echo},
-        {req: 'ALL /echo/*splat', fn: echo},
+        {req: 'ALL /echo/*', fn: echo},
         {req: 'POST /xmljson', fn: xmljson},
-        {req: 'ALL /{*splat}', fn: page404},
+        {req: 'ALL *', fn: page404},
     ]);
+
+    // https://expressjs.com/en/guide/error-handling.html
+    app.use(function (error, req, res, next) {
+        console.error(error);
+        res.status(400).send('Failed');
+    });
 
     await express_run(app);
 }

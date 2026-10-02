@@ -26,7 +26,7 @@ async function main()
         {req: 'DELETE /api/v1/articles/:article_uid', fn: route_articles_delete},
         {req: 'PATCH /api/v1/articles/:article_uid', fn: route_articles_update},
         {req: 'PUT /api/v1/articles/:article_uid', fn: route_articles_replace},
-        {req: 'ALL *', fn: page404},
+        {req: 'ALL /{*splat}', fn: page404},
     ]);
 
     await express_run(app);
