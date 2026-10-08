@@ -36,7 +36,7 @@ async function main()
         {req: 'GET /api/v1/articles.json', fn: echo},
         {req: 'POST /api/v1/articles', fn: echo},
         {req: 'DELETE /api/v1/articles/:uid', fn: echo},
-        {req: 'ALL *', fn: page404},
+        {req: 'ALL /{*splat}', fn: page404},
     ]);
 
     await express_run(app);
