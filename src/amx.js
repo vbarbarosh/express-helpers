@@ -1,5 +1,3 @@
-const Promise = require('bluebird');
-
 /**
  * Async method wrapper for express routes
  *
@@ -16,8 +14,8 @@ const Promise = require('bluebird');
 function amx(fn)
 {
     return function (req, res, next) {
-        // Express 5 warns when a handler returns a non-native promise
-        Promise.method(fn).call(this, req, res).catch(next);
+        // A native promise: Express 5 warns when a handler returns a Bluebird one
+        return new Promise(resolve => resolve(fn.call(this, req, res))).catch(next);
     };
 }
 
