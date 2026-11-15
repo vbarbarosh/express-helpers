@@ -54,28 +54,28 @@ async function route_articles_list(req, res)
 // POST /api/v1/articles
 async function route_articles_create(req, res)
 {
-    res.status({uid: 'na', message: 'POST /api/v1/articles'});
+    res.send({uid: 'na', message: 'POST /api/v1/articles'});
 }
 
 // DELETE /api/v1/articles/:article_uid
 async function route_articles_delete(req, res)
 {
     const {article_uid} = req.params;
-    res.status({uid: article_uid, message: `DELETE /api/v1/articles/${articles}`});
+    res.send({uid: article_uid, message: `DELETE /api/v1/articles/${article_uid}`});
 }
 
 // PATCH /api/v1/articles/:article_uid
 async function route_articles_update(req, res)
 {
     const {article_uid} = req.params;
-    res.status({uid: article_uid, message: `PATCH /api/v1/articles/${articles}`});
+    res.send({uid: article_uid, message: `PATCH /api/v1/articles/${article_uid}`});
 }
 
 // PUT /api/v1/articles/:article_uid
 async function route_articles_replace(req, res)
 {
     const {article_uid} = req.params;
-    res.status({uid: article_uid, message: `PUT /api/v1/articles/${articles}`});
+    res.send({uid: article_uid, message: `PUT /api/v1/articles/${article_uid}`});
 }
 
 async function echo(req, res)
