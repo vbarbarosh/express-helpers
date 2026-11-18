@@ -2,7 +2,12 @@ const Promise = require('bluebird');
 
 function express_run(app, port = 3000, host = 'localhost')
 {
-    const server = app.listen(port, host, function () {
+    const server = app.listen(port, host, function (error) {
+        // Express 5 calls back with a listen error too (EADDRINUSE, ...):
+        // the promise below rejects with it
+        if (error) {
+            return;
+        }
         const {address, port} = this.address();
         console.log(`[express_run] Listening to ${address}:${port}`);
     });
@@ -18,8 +23,9 @@ function express_run(app, port = 3000, host = 'localhost')
     // });
 
     // return pending(cb => server.once('close', cb));
-    return new Promise(function (resolve) {
+    return new Promise(function (resolve, reject) {
         server.once('close', resolve);
+        server.once('error', reject);
     });
 
     function sigterm() {
