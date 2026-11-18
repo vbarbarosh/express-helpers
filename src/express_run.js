@@ -21,22 +21,22 @@ function express_run(app, port = 3000, host = 'localhost')
     //     process.off('SIGTERM', sigterm);
     //     process.off('SIGINT', sigint);
     // });
+    //
+    // function sigterm() {
+    //     console.log('[express_run] SIGTERM');
+    //     server.close();
+    // }
+    //
+    // function sigint() {
+    //     console.log('[express_run] SIGINT');
+    //     server.close();
+    // }
 
     // return pending(cb => server.once('close', cb));
     return new Promise(function (resolve, reject) {
         server.once('close', resolve);
         server.once('error', reject);
     });
-
-    function sigterm() {
-        console.log('[express_run] SIGTERM');
-        server.close();
-    }
-
-    function sigint() {
-        console.log('[express_run] SIGINT');
-        server.close();
-    }
 }
 
 module.exports = express_run;

@@ -3,12 +3,29 @@
   "version": "2.2.2",
   "author": "Vladimir Barbaros <vladimir.barbarosh@gmail.com>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vbarbarosh/express-helpers.git"
+  },
+  "files": [
+    "demos",
+    "src",
+    "!src/**/*.test.js"
+  ],
+  "scripts": {
+    "lint": "eslint src demos eslint.config.js",
+    "test": "mocha 'src/**/*.test.js'"
+  },
   "peerDependencies": {
     "bluebird": "*",
     "cuid": "*"
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "@vbarbarosh/node-helpers": "^3.80.1",
-    "express": "^5.3.0"
+    "eslint": "^10.15.0",
+    "express": "^5.3.0",
+    "globals": "^17.14.0",
+    "mocha": "^12.0.3"
   }
 }
