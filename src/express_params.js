@@ -1,7 +1,7 @@
 function express_params(req)
 {
     return {
-        guessed_url : `${req.headers['x-forwarded-proto'] ?? req.protocol}://${req.headers['host']}${req.path}`,
+        guessed_url : `${req.headers['x-forwarded-proto'] ?? req.protocol}://${req.headers['host']}${req.originalUrl.split('?')[0]}`,
         // https://expressjs.com/en/api.html#req.ip
         ip: req.ip || null,
         ips: req.ips || null,
